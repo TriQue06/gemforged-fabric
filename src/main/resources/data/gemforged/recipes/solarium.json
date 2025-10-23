@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "gemforged:solarium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "gemforged:solarium"
+  }
+}

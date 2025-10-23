@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gemforged:prism_template"
+    },
+    {
+      "item": "gemforged:prismyte"
+    }
+  ],
+  "result": {
+    "item": "gemforged:thunder_prism"
+  }
+}
