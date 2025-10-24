@@ -3,6 +3,7 @@ package net.trique.gemforged.data;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
+import net.minecraft.client.gl.Uniform;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -12,6 +13,7 @@ import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.trique.gemforged.block.GemforgedBlocks;
 import net.trique.gemforged.item.GemforgedItems;
@@ -56,7 +58,7 @@ public class GemforgedBlockLootTableProvider extends FabricBlockLootTableProvide
     public LootTable.Builder oreDrops(Block block, Item item) {
         return BlockLootTableGenerator.dropsWithSilkTouch(block, (LootPoolEntry.Builder<?>) this.applyExplosionDecay(block,
                 ((LeafEntry.Builder<?>) ItemEntry.builder(item)
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
-                        .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))));
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f)))
+                        .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE)))));
     }
 }

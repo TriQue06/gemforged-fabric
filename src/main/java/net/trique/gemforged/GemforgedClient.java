@@ -15,7 +15,6 @@ public class GemforgedClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         LOGGER.info("Initializing Gemforged client...");
-
         HudRenderCallback.EVENT.register(new RageOverlay());
         EntityRendererRegistry.register(GemforgedEntities.THUNDER_PRISM, ThunderPrismRenderer::new);
     }

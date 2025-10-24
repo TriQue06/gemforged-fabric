@@ -1,6 +1,6 @@
 package net.trique.gemforged.world.gen;
 
-public class GemforgedWorldGen {
+public class GemforgedWorldGeneration {
     public static void generateGemforgedWorldGen() {
         GemforgedOreGeneration.generateOres();
     }

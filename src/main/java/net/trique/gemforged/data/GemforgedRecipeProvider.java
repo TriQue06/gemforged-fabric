@@ -19,7 +19,6 @@ public class GemforgedRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
-        // --- ORE SMELTING & BLASTING ---
         offerSmelting(exporter, List.of(GemforgedBlocks.NYXITE_ORE, GemforgedBlocks.DEEPSLATE_NYXITE_ORE),
                 RecipeCategory.MISC, GemforgedItems.NYXITE, 1.0f, 200, "nyxite");
         offerBlasting(exporter, List.of(GemforgedBlocks.NYXITE_ORE, GemforgedBlocks.DEEPSLATE_NYXITE_ORE),
@@ -55,7 +54,6 @@ public class GemforgedRecipeProvider extends FabricRecipeProvider {
         offerBlasting(exporter, List.of(GemforgedBlocks.GRAVITIUM_ORE, GemforgedBlocks.DEEPSLATE_GRAVITIUM_ORE),
                 RecipeCategory.MISC, GemforgedItems.GRAVITIUM, 1.0f, 100, "gravitium");
 
-        // --- STORAGE (BLOCK <-> GEM) RECIPES ---
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, GemforgedItems.NYXITE, RecipeCategory.DECORATIONS, GemforgedBlocks.NYXITE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, GemforgedItems.BLOODSTONE, RecipeCategory.DECORATIONS, GemforgedBlocks.BLOODSTONE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, GemforgedItems.SOLARIUM, RecipeCategory.DECORATIONS, GemforgedBlocks.SOLARIUM_BLOCK);
@@ -64,7 +62,6 @@ public class GemforgedRecipeProvider extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, GemforgedItems.PRISMYTE, RecipeCategory.DECORATIONS, GemforgedBlocks.PRISMYTE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, GemforgedItems.GRAVITIUM, RecipeCategory.DECORATIONS, GemforgedBlocks.GRAVITIUM_BLOCK);
 
-        // --- CUSTOM SHAPELESS RECIPES ---
         ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, GemforgedItems.SHADOWSTEP_DAGGER)
                 .input(GemforgedItems.DAGGER_TEMPLATE)
                 .input(GemforgedItems.NYXITE)
