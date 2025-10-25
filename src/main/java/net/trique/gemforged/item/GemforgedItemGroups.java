@@ -14,40 +14,41 @@ public class GemforgedItemGroups {
     public static final ItemGroup GEMFORGED_GROUP = Registry.register(Registries.ITEM_GROUP,
             new Identifier(Gemforged.MOD_ID, "gemforged"),
             FabricItemGroup.builder()
-                    .displayName(Text.translatable("itemGroup.gemforged"))
+                    .displayName(Text.translatable("gemforged.tab"))
                     .icon(() -> new ItemStack(GemforgedItems.BATTLE_CHARM))
                     .entries((displayContext, entries) -> {
-
-                        entries.add(GemforgedItems.NYXITE);
-                        entries.add(GemforgedItems.BLOODSTONE);
-                        entries.add(GemforgedItems.SOLARIUM);
-                        entries.add(GemforgedItems.VENOMYTE);
-                        entries.add(GemforgedItems.PHOENIXTONE);
-                        entries.add(GemforgedItems.PRISMYTE);
-                        entries.add(GemforgedItems.GRAVITIUM);
-                        entries.add(GemforgedBlocks.NYXITE_BLOCK);
+                        entries.add(GemforgedBlocks.RANDOM_GEM_VEIN);
+                        entries.add(GemforgedBlocks.DEEPSLATE_RANDOM_GEM_VEIN);
                         entries.add(GemforgedBlocks.BLOODSTONE_BLOCK);
+                        entries.add(GemforgedBlocks.PHOENIXTONE_BLOCK);
                         entries.add(GemforgedBlocks.SOLARIUM_BLOCK);
                         entries.add(GemforgedBlocks.VENOMYTE_BLOCK);
-                        entries.add(GemforgedBlocks.PHOENIXTONE_BLOCK);
                         entries.add(GemforgedBlocks.PRISMYTE_BLOCK);
                         entries.add(GemforgedBlocks.GRAVITIUM_BLOCK);
+                        entries.add(GemforgedBlocks.NYXITE_BLOCK);
 
-                        entries.add(GemforgedItems.SHADOWSTEP_DAGGER);
                         entries.add(GemforgedItems.BATTLE_CHARM);
+                        entries.add(GemforgedItems.PHOENIX_CHARM);
                         entries.add(GemforgedItems.SANDBURST_STAFF);
                         entries.add(GemforgedItems.VENOMFANG_BLADE);
-                        entries.add(GemforgedItems.PHOENIX_CHARM);
                         entries.add(GemforgedItems.THUNDER_PRISM);
                         entries.add(GemforgedItems.GRAVITY_HORN);
+                        entries.add(GemforgedItems.SHADOWSTEP_DAGGER);
 
-                        entries.add(GemforgedItems.DAGGER_TEMPLATE);
+                        entries.add(GemforgedItems.BLOODSTONE);
+                        entries.add(GemforgedItems.PHOENIXTONE);
+                        entries.add(GemforgedItems.SOLARIUM);
+                        entries.add(GemforgedItems.VENOMYTE);
+                        entries.add(GemforgedItems.PRISMYTE);
+                        entries.add(GemforgedItems.GRAVITIUM);
+                        entries.add(GemforgedItems.NYXITE);
+
                         entries.add(GemforgedItems.CHARM_TEMPLATE);
                         entries.add(GemforgedItems.STAFF_TEMPLATE);
-                        entries.add(GemforgedItems.PRISM_TEMPLATE);
                         entries.add(GemforgedItems.BLADE_TEMPLATE);
+                        entries.add(GemforgedItems.PRISM_TEMPLATE);
                         entries.add(GemforgedItems.HORN_TEMPLATE);
-
+                        entries.add(GemforgedItems.DAGGER_TEMPLATE);
                     }).build());
 
     public static void registerItemGroups() {

@@ -8,24 +8,6 @@ import net.trique.gemforged.world.GemforgedPlacedFeatures;
 public class GemforgedOreGeneration {
     public static void generateOres() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, GemforgedPlacedFeatures.NYXITE_ORE_PLACED_KEY);
-
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, GemforgedPlacedFeatures.BLOODSTONE_ORE_PLACED_KEY);
-
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, GemforgedPlacedFeatures.SOLARIUM_ORE_PLACED_KEY);
-
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, GemforgedPlacedFeatures.VENOMYTE_ORE_PLACED_KEY);
-
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, GemforgedPlacedFeatures.PHOENIXTONE_ORE_PLACED_KEY);
-
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, GemforgedPlacedFeatures.PRISMYTE_ORE_PLACED_KEY);
-
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, GemforgedPlacedFeatures.GRAVITIUM_ORE_PLACED_KEY);
+                GenerationStep.Feature.UNDERGROUND_ORES, GemforgedPlacedFeatures.RANDOM_GEM_VEIN_PLACED_KEY);
     }
 }

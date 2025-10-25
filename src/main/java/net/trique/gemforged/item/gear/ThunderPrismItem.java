@@ -44,7 +44,7 @@ public class ThunderPrismItem extends Item {
                 prism.setItem(prismStack);
                 world.spawnEntity(prism);
 
-                user.getItemCooldownManager().set(this, 20 * 30 * 2);
+                user.getItemCooldownManager().set(this, 20 * 45);
 
                 if (!creative) {
                     chargeResource.decrement(1);

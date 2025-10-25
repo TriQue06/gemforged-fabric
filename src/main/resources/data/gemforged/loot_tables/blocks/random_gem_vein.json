@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "gemforged:nyxite"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "gemforged:bloodstone"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "gemforged:solarium"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "gemforged:venomyte"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "gemforged:phoenixtone"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "gemforged:prismyte"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "gemforged:gravitium"
+        }
+      ],
+      "functions": [
+        {
+          "enchantment": "minecraft:fortune",
+          "formula": "minecraft:ore_drops",
+          "function": "minecraft:apply_bonus"
+        },
+        {
+          "function": "minecraft:explosion_decay"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}
