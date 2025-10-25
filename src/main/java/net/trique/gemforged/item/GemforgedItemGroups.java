@@ -30,6 +30,7 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedItems.BATTLE_CHARM);
                         entries.add(GemforgedItems.PHOENIX_CHARM);
                         entries.add(GemforgedItems.SANDBURST_STAFF);
+                        entries.add(GemforgedItems.VERDANT_TOTEM);
                         entries.add(GemforgedItems.VENOMFANG_BLADE);
                         entries.add(GemforgedItems.THUNDER_PRISM);
                         entries.add(GemforgedItems.GRAVITY_HORN);
@@ -38,6 +39,7 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedItems.BLOODSTONE);
                         entries.add(GemforgedItems.PHOENIXTONE);
                         entries.add(GemforgedItems.SOLARIUM);
+                        entries.add(GemforgedItems.VERDANTITE);
                         entries.add(GemforgedItems.VENOMYTE);
                         entries.add(GemforgedItems.PRISMYTE);
                         entries.add(GemforgedItems.GRAVITIUM);
@@ -49,6 +51,7 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedItems.PRISM_TEMPLATE);
                         entries.add(GemforgedItems.HORN_TEMPLATE);
                         entries.add(GemforgedItems.DAGGER_TEMPLATE);
+                        entries.add(GemforgedItems.TOTEM_TEMPLATE);
                     }).build());
 
     public static void registerItemGroups() {

@@ -10,12 +10,12 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.trique.gemforged.entity.ThunderPrismEntity;
+import net.trique.gemforged.entity.VerdantTotemEntity;
 import net.trique.gemforged.item.GemforgedItems;
 
-public class ThunderPrismItem extends Item {
+public class VerdantTotemItem extends Item {
 
-    public ThunderPrismItem(FabricItemSettings settings) {
+    public VerdantTotemItem(FabricItemSettings settings) {
         super(settings.maxDamage(250));
     }
 
@@ -33,18 +33,18 @@ public class ThunderPrismItem extends Item {
 
             if (creative || !chargeResource.isEmpty()) {
                 world.playSound(null, user.getBlockPos(),
-                        SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.PLAYERS,
-                        0.9F, 0.6F + world.getRandom().nextFloat() * 0.2F);
+                        SoundEvents.BLOCK_AMETHYST_BLOCK_RESONATE, SoundCategory.PLAYERS,
+                        0.9F, 0.8F + world.getRandom().nextFloat() * 0.2F);
 
-                ItemStack prismStack = stack.copy();
-                prismStack.setCount(1);
+                ItemStack totemStack = stack.copy();
+                totemStack.setCount(1);
 
-                ThunderPrismEntity prism = new ThunderPrismEntity(world,
+                VerdantTotemEntity totem = new VerdantTotemEntity(world,
                         user.getX(), user.getY() + 1.0, user.getZ(), user);
-                prism.setItem(prismStack);
-                world.spawnEntity(prism);
+                totem.setItem(totemStack);
+                world.spawnEntity(totem);
 
-                user.getItemCooldownManager().set(this, 20 * 45);
+                user.getItemCooldownManager().set(this, 20 * 30);
 
                 if (!creative) {
                     chargeResource.decrement(1);
@@ -59,7 +59,7 @@ public class ThunderPrismItem extends Item {
     private ItemStack findChargeResource(PlayerEntity player) {
         for (int i = 0; i < player.getInventory().size(); i++) {
             ItemStack s = player.getInventory().getStack(i);
-            if (s.isOf(GemforgedItems.PRISMYTE)) return s;
+            if (s.isOf(GemforgedItems.VERDANTITE)) return s;
         }
         return ItemStack.EMPTY;
     }

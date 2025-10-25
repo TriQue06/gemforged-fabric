@@ -17,49 +17,56 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 public class GemforgedBlocks {
     public static final Block NYXITE_BLOCK = registerBlock("nyxite_block",
             new Block(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.STONE_GRAY)
+                    .mapColor(MapColor.TERRACOTTA_PURPLE)
                     .strength(5.0F, 6.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.METAL)));
 
     public static final Block BLOODSTONE_BLOCK = registerBlock("bloodstone_block",
             new Block(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.STONE_GRAY)
+                    .mapColor(MapColor.RED)
                     .strength(5.0F, 6.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.METAL)));
 
     public static final Block SOLARIUM_BLOCK = registerBlock("solarium_block",
             new Block(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.STONE_GRAY)
+                    .mapColor(MapColor.GOLD)
                     .strength(5.0F, 6.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.METAL)));
 
     public static final Block VENOMYTE_BLOCK = registerBlock("venomyte_block",
             new Block(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.STONE_GRAY)
+                    .mapColor(MapColor.DARK_GREEN)
                     .strength(5.0F, 6.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.METAL)));
 
     public static final Block PHOENIXTONE_BLOCK = registerBlock("phoenixtone_block",
             new Block(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.STONE_GRAY)
+                    .mapColor(MapColor.ORANGE)
                     .strength(5.0F, 6.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.METAL)));
 
     public static final Block PRISMYTE_BLOCK = registerBlock("prismyte_block",
             new Block(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.STONE_GRAY)
+                    .mapColor(MapColor.DIAMOND_BLUE)
                     .strength(5.0F, 6.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.METAL)));
 
     public static final Block GRAVITIUM_BLOCK = registerBlock("gravitium_block",
             new Block(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.STONE_GRAY)
+                    .mapColor(MapColor.PURPLE)
+                    .strength(5.0F, 6.0F)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.METAL)));
+
+    public static final Block VERDANTITE_BLOCK = registerBlock("verdantite_block",
+            new Block(AbstractBlock.Settings.create()
+                    .mapColor(MapColor.GREEN)
                     .strength(5.0F, 6.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.METAL)));

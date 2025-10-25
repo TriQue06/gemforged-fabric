@@ -15,24 +15,20 @@ import net.trique.gemforged.item.gear.*;
 public class GemforgedItems {
     public static final Item SHADOWSTEP_DAGGER = registerItem("shadowstep_dagger",
             new ShadowstepDaggerItem(new FabricItemSettings().rarity(Rarity.EPIC).maxDamage(240)));
-
     public static final Item BATTLE_CHARM = registerItem("battle_charm",
             new BattleCharmItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
-
     public static final Item SANDBURST_STAFF = registerItem("sandburst_staff",
             new SandburstStaffItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
-
     public static final Item VENOMFANG_BLADE = registerItem("venomfang_blade",
             new VenomfangBladeItem(new FabricItemSettings().rarity(Rarity.EPIC).maxDamage(240)));
-
     public static final Item PHOENIX_CHARM = registerItem("phoenix_charm",
             new PhoenixCharmItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
-
     public static final Item THUNDER_PRISM = registerItem("thunder_prism",
             new ThunderPrismItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC).fireproof()));
-
     public static final Item GRAVITY_HORN = registerItem("gravity_horn",
             new GravityHornItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
+    public static final Item VERDANT_TOTEM = registerItem("verdant_totem",
+            new VerdantTotemItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
 
     public static final Item NYXITE = registerItem("nyxite",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
@@ -48,6 +44,8 @@ public class GemforgedItems {
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
     public static final Item GRAVITIUM = registerItem("gravitium",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
+    public static final Item VERDANTITE = registerItem("verdantite",
+            new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
 
     public static final Item DAGGER_TEMPLATE = registerItem("dagger_template",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxCount(1)));
@@ -60,6 +58,8 @@ public class GemforgedItems {
     public static final Item BLADE_TEMPLATE = registerItem("blade_template",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxCount(1)));
     public static final Item HORN_TEMPLATE = registerItem("horn_template",
+            new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxCount(1)));
+    public static final Item TOTEM_TEMPLATE = registerItem("totem_template",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxCount(1)));
 
     private static Item registerItem(String name, Item item) {

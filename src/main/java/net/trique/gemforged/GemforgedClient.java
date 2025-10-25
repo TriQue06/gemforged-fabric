@@ -4,8 +4,10 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.trique.gemforged.client.RageOverlay;
+import net.trique.gemforged.client.render.VerdantTotemRenderer;
 import net.trique.gemforged.entity.GemforgedEntities;
 import net.trique.gemforged.client.render.ThunderPrismRenderer;
+import net.trique.gemforged.entity.VerdantTotemEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,5 +19,6 @@ public class GemforgedClient implements ClientModInitializer {
         LOGGER.info("Initializing Gemforged client...");
         HudRenderCallback.EVENT.register(new RageOverlay());
         EntityRendererRegistry.register(GemforgedEntities.THUNDER_PRISM, ThunderPrismRenderer::new);
+        EntityRendererRegistry.register(GemforgedEntities.VERDANT_TOTEM, VerdantTotemRenderer::new);
     }
 }

@@ -10,17 +10,17 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
 import net.trique.gemforged.Gemforged;
-import net.trique.gemforged.entity.ThunderPrismEntity;
+import net.trique.gemforged.entity.VerdantTotemEntity;
 
-public class ThunderPrismRenderer extends EntityRenderer<ThunderPrismEntity> {
-    private static final Identifier TEXTURE = new Identifier(Gemforged.MOD_ID, "textures/item/thunder_prism.png");
+public class VerdantTotemRenderer extends EntityRenderer<VerdantTotemEntity> {
+    private static final Identifier TEXTURE = new Identifier(Gemforged.MOD_ID, "textures/item/verdant_totem.png");
 
-    public ThunderPrismRenderer(EntityRendererFactory.Context context) {
+    public VerdantTotemRenderer(EntityRendererFactory.Context context) {
         super(context);
     }
 
     @Override
-    public void render(ThunderPrismEntity entity, float yaw, float tickDelta,
+    public void render(VerdantTotemEntity entity, float yaw, float tickDelta,
                        MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
 
         matrices.push();
@@ -34,7 +34,7 @@ public class ThunderPrismRenderer extends EntityRenderer<ThunderPrismEntity> {
         matrices.translate(0.0F, -0.1F, 0.0F);
 
         MinecraftClient.getInstance().getItemRenderer().renderItem(
-                entity.getItem(),
+                entity.getStack(),
                 ModelTransformationMode.FIXED,
                 light,
                 OverlayTexture.DEFAULT_UV,
@@ -49,7 +49,7 @@ public class ThunderPrismRenderer extends EntityRenderer<ThunderPrismEntity> {
     }
 
     @Override
-    public Identifier getTexture(ThunderPrismEntity entity) {
+    public Identifier getTexture(VerdantTotemEntity entity) {
         return TEXTURE;
     }
 }
