@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/TriQue06/gemforged-fabric"
 	},
 	"license": "MIT Licence",
 	"icon": "assets/gemforged/icon.png",
@@ -27,7 +27,7 @@
 	},
 	"depends": {
 		"fabricloader": ">=0.17.3",
-		"minecraft": "~1.20.1",
+		"minecraft": "1.21.x",
 		"java": ">=17",
 		"fabric-api": "*"
 	},
