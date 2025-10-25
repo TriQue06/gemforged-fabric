@@ -25,8 +25,8 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedBlocks.VERDANTITE_BLOCK);
                         entries.add(GemforgedBlocks.VENOMYTE_BLOCK);
                         entries.add(GemforgedBlocks.PRISMYTE_BLOCK);
-                        entries.add(GemforgedBlocks.GRAVITIUM_BLOCK);
                         entries.add(GemforgedBlocks.NYXITE_BLOCK);
+                        entries.add(GemforgedBlocks.GRAVITIUM_BLOCK);
 
                         entries.add(GemforgedItems.BATTLE_CHARM);
                         entries.add(GemforgedItems.PHOENIX_CHARM);
@@ -34,8 +34,8 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedItems.VERDANT_TOTEM);
                         entries.add(GemforgedItems.VENOMFANG_BLADE);
                         entries.add(GemforgedItems.THUNDER_PRISM);
-                        entries.add(GemforgedItems.GRAVITY_HORN);
                         entries.add(GemforgedItems.SHADOWSTEP_DAGGER);
+                        entries.add(GemforgedItems.GRAVITY_HORN);
 
                         entries.add(GemforgedItems.BLOODSTONE);
                         entries.add(GemforgedItems.PHOENIXTONE);
@@ -43,16 +43,16 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedItems.VERDANTITE);
                         entries.add(GemforgedItems.VENOMYTE);
                         entries.add(GemforgedItems.PRISMYTE);
-                        entries.add(GemforgedItems.GRAVITIUM);
                         entries.add(GemforgedItems.NYXITE);
+                        entries.add(GemforgedItems.GRAVITIUM);
 
                         entries.add(GemforgedItems.CHARM_TEMPLATE);
                         entries.add(GemforgedItems.STAFF_TEMPLATE);
                         entries.add(GemforgedItems.TOTEM_TEMPLATE);
                         entries.add(GemforgedItems.BLADE_TEMPLATE);
                         entries.add(GemforgedItems.PRISM_TEMPLATE);
-                        entries.add(GemforgedItems.HORN_TEMPLATE);
                         entries.add(GemforgedItems.DAGGER_TEMPLATE);
+                        entries.add(GemforgedItems.HORN_TEMPLATE);
                     }).build());
 
     public static void registerItemGroups() {
