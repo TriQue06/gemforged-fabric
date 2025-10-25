@@ -22,6 +22,7 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedBlocks.BLOODSTONE_BLOCK);
                         entries.add(GemforgedBlocks.PHOENIXTONE_BLOCK);
                         entries.add(GemforgedBlocks.SOLARIUM_BLOCK);
+                        entries.add(GemforgedBlocks.VERDANTITE_BLOCK);
                         entries.add(GemforgedBlocks.VENOMYTE_BLOCK);
                         entries.add(GemforgedBlocks.PRISMYTE_BLOCK);
                         entries.add(GemforgedBlocks.GRAVITIUM_BLOCK);
@@ -47,11 +48,11 @@ public class GemforgedItemGroups {
 
                         entries.add(GemforgedItems.CHARM_TEMPLATE);
                         entries.add(GemforgedItems.STAFF_TEMPLATE);
+                        entries.add(GemforgedItems.TOTEM_TEMPLATE);
                         entries.add(GemforgedItems.BLADE_TEMPLATE);
                         entries.add(GemforgedItems.PRISM_TEMPLATE);
                         entries.add(GemforgedItems.HORN_TEMPLATE);
                         entries.add(GemforgedItems.DAGGER_TEMPLATE);
-                        entries.add(GemforgedItems.TOTEM_TEMPLATE);
                     }).build());
 
     public static void registerItemGroups() {

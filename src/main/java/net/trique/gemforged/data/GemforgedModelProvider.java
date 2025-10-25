@@ -22,6 +22,7 @@ public class GemforgedModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.PHOENIXTONE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.PRISMYTE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.GRAVITIUM_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.VERDANTITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.RANDOM_GEM_VEIN);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_RANDOM_GEM_VEIN);
     }
