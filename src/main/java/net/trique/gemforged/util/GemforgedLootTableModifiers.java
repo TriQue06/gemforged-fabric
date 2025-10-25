@@ -11,15 +11,16 @@ import net.trique.gemforged.item.GemforgedItems;
 public final class GemforgedLootTableModifiers {
     private GemforgedLootTableModifiers() {}
 
-    private static final Identifier ANCIENT_CITY_CHEST   = new Identifier("minecraft", "chests/ancient_city");
-    private static final Identifier BASTION_BRIDGE       = new Identifier("minecraft", "chests/bastion_bridge");
-    private static final Identifier BASTION_HOGLIN       = new Identifier("minecraft", "chests/bastion_hoglin_stable");
-    private static final Identifier BASTION_OTHER        = new Identifier("minecraft", "chests/bastion_other");
-    private static final Identifier BASTION_TREASURE     = new Identifier("minecraft", "chests/bastion_treasure");
-    private static final Identifier DESERT_PYRAMID       = new Identifier("minecraft", "chests/desert_pyramid");
-    private static final Identifier JUNGLE_TEMPLE        = new Identifier("minecraft", "chests/jungle_temple");
-    private static final Identifier END_CITY_TREASURE    = new Identifier("minecraft", "chests/end_city_treasure");
+    private static final Identifier ANCIENT_CITY_CHEST = new Identifier("minecraft", "chests/ancient_city");
+    private static final Identifier BASTION_BRIDGE = new Identifier("minecraft", "chests/bastion_bridge");
+    private static final Identifier BASTION_HOGLIN = new Identifier("minecraft", "chests/bastion_hoglin_stable");
+    private static final Identifier BASTION_OTHER = new Identifier("minecraft", "chests/bastion_other");
+    private static final Identifier BASTION_TREASURE = new Identifier("minecraft", "chests/bastion_treasure");
+    private static final Identifier DESERT_PYRAMID = new Identifier("minecraft", "chests/desert_pyramid");
+    private static final Identifier JUNGLE_TEMPLE = new Identifier("minecraft", "chests/jungle_temple");
+    private static final Identifier END_CITY_TREASURE = new Identifier("minecraft", "chests/end_city_treasure");
     private static final Identifier OCEAN_RUIN_COLD_ARCH = new Identifier("minecraft", "archaeology/ocean_ruin_cold");
+    private static final Identifier PILLAGER_OUTPOST = new Identifier("minecraft", "chests/pillager_outpost");
 
     public static void register() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
@@ -37,6 +38,8 @@ public final class GemforgedLootTableModifiers {
                 tableBuilder.pool(makePoolWithChance(ItemEntry.builder(GemforgedItems.PRISM_TEMPLATE), 0.25f));
             } else if (id.equals(END_CITY_TREASURE)) {
                 tableBuilder.pool(makePoolWithChance(ItemEntry.builder(GemforgedItems.HORN_TEMPLATE), 0.25f));
+            } else if (id.equals(PILLAGER_OUTPOST)) {
+                tableBuilder.pool(makePoolWithChance(ItemEntry.builder(GemforgedItems.TOTEM_TEMPLATE), 0.25f));
             }
         });
     }
