@@ -7,13 +7,16 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Vector3f;
@@ -36,18 +39,23 @@ public class PhoenixEffect extends StatusEffect {
 
     public PhoenixEffect() {
         super(StatusEffectCategory.BENEFICIAL, 0xFF7A00);
-        this.addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, MOVE_UUID.toString(),
-                BASE_MOVE_MULT, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+
+        // ✅ Artık doğrudan RegistryEntry değil, EntityAttributes sabitleri kullanılıyor
+        this.addAttributeModifier(
+                EntityAttributes.GENERIC_MOVEMENT_SPEED,
+                Identifier.of(MOVE_UUID.toString()),
+                BASE_MOVE_MULT,
+                EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+        );
 
         ServerLivingEntityEvents.ALLOW_DEATH.register((entity, source, amount) -> {
-            if (entity instanceof PlayerEntity player && player.hasStatusEffect(GemforgedEffects.PHOENIX)) {
+            if (entity instanceof PlayerEntity player && player.hasStatusEffect((RegistryEntry<StatusEffect>) GemforgedEffects.PHOENIX)) {
                 if (PhoenixEffect.tryRevive(player)) return false;
             }
             return true;
         });
     }
 
-    @Override
     public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
         if (entity instanceof PlayerEntity player) {
             Vec3d pos = player.getPos();
@@ -56,7 +64,6 @@ public class PhoenixEffect extends StatusEffect {
         }
     }
 
-    @Override
     public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
         if (entity instanceof PlayerEntity player) {
             STATES.remove(player.getUuid());
@@ -68,9 +75,10 @@ public class PhoenixEffect extends StatusEffect {
         return true;
     }
 
+    // ✅ Yeni imza: boolean döner (void değil!)
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if (!(entity.getWorld() instanceof ServerWorld level)) return;
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
+        if (!(entity.getWorld() instanceof ServerWorld level)) return false;
 
         Vec3d look = entity.getRotationVec(1.0f);
         Vec3d pos = entity.getPos();
@@ -118,6 +126,8 @@ public class PhoenixEffect extends StatusEffect {
                     SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.PLAYERS,
                     0.5f, 0.10f + entity.getRandom().nextFloat() * 0.20f);
         }
+
+        return true;
     }
 
     public static boolean tryRevive(PlayerEntity player) {
@@ -130,13 +140,14 @@ public class PhoenixEffect extends StatusEffect {
             ServerWorld sw = (ServerWorld) sp.getWorld();
             sp.teleport(sw, state.pos.x, state.pos.y, state.pos.z, state.yaw, state.pitch);
         } else {
-            player.setPosition(state.pos.x, state.pos.y, state.pos.z);
+            // ✅ 1.21.1 client tarafında güvenli teleport
+            player.requestTeleport(state.pos.x, state.pos.y, state.pos.z);
             player.setYaw(state.yaw);
             player.setPitch(state.pitch);
         }
 
         STATES.remove(player.getUuid());
-        player.removeStatusEffect(GemforgedEffects.PHOENIX);
+        player.removeStatusEffect((RegistryEntry<StatusEffect>) GemforgedEffects.PHOENIX); // ✅ artık StatusEffect kabul ediyor
 
         if (player.getWorld() instanceof ServerWorld level) {
             Vec3d pos = player.getPos();

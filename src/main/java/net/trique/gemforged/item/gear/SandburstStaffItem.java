@@ -39,7 +39,7 @@ public class SandburstStaffItem extends Item {
     private static final float MIN_RENDER_RADIUS = 0.8f;
     private static final float RINGS_HEIGHT = 2.0f;
 
-    public SandburstStaffItem(FabricItemSettings settings) {
+    public SandburstStaffItem(Settings settings) {
         super(settings.maxDamage(250));
     }
 

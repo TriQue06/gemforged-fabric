@@ -17,8 +17,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
@@ -42,7 +40,7 @@ public class ShadowstepDaggerItem extends SwordItem {
     private static final Vector3f SHADOW_PURPLE = new Vector3f(0.2627f, 0.1569f, 0.3843f);
     private static final Vector3f SHADOW_LIGHT = new Vector3f(0.4745f, 0.3294f, 0.6118f);
 
-    public ShadowstepDaggerItem(FabricItemSettings settings) {
+    public ShadowstepDaggerItem(Settings settings) {
         super(ToolMaterials.IRON, 2, -2.0f, settings.maxDamage(250));
     }
 

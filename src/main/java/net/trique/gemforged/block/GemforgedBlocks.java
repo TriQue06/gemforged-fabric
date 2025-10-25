@@ -12,7 +12,6 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.trique.gemforged.Gemforged;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 
 public class GemforgedBlocks {
     public static final Block NYXITE_BLOCK = registerBlock("nyxite_block",
@@ -72,32 +71,32 @@ public class GemforgedBlocks {
                     .sounds(BlockSoundGroup.METAL)));
 
     public static final Block RANDOM_GEM_VEIN = registerBlock("random_gem_vein",
-            new ExperienceDroppingBlock(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.STONE_GRAY)
-                    .strength(3.0F, 3.0F)
-                    .requiresTool()
-                    .sounds(BlockSoundGroup.STONE),
-                    UniformIntProvider.create(4, 8)));
+            new ExperienceDroppingBlock(UniformIntProvider.create(4, 8),
+                    AbstractBlock.Settings.create()
+                                .mapColor(MapColor.STONE_GRAY)
+                                .strength(3.0F, 3.0F)
+                                .requiresTool()
+                                .sounds(BlockSoundGroup.STONE)));
 
     public static final Block DEEPSLATE_RANDOM_GEM_VEIN = registerBlock("deepslate_random_gem_vein",
-            new ExperienceDroppingBlock(AbstractBlock.Settings.create()
-                    .mapColor(MapColor.DEEPSLATE_GRAY)
-                    .strength(4.5F, 3.0F)
-                    .requiresTool()
-                    .sounds(BlockSoundGroup.DEEPSLATE),
-                    UniformIntProvider.create(4, 8)));
+            new ExperienceDroppingBlock(UniformIntProvider.create(4, 8),
+                    AbstractBlock.Settings.create()
+                                .mapColor(MapColor.DEEPSLATE_GRAY)
+                                .strength(4.5F, 3.0F)
+                                .requiresTool()
+                                .sounds(BlockSoundGroup.DEEPSLATE)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(Gemforged.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, Identifier.of(Gemforged.MOD_ID, name), block);
     }
 
     private static Item registerBlockItem(String name, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(Gemforged.MOD_ID, name),
-                new BlockItem(block, new FabricItemSettings()));
+        return Registry.register(Registries.ITEM, Identifier.of(Gemforged.MOD_ID, name),
+                new BlockItem(block, new Item.Settings()));
     }
 
     public static void registerModBlocks() {
-        Gemforged.LOGGER.info("Registering ModBlocks for " + Gemforged.MOD_ID);
+        Gemforged.LOGGER.info("Registering Gemforged Blocks for " + Gemforged.MOD_ID);
     }
 }

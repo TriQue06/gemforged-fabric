@@ -33,7 +33,7 @@ public class GravityHornItem extends Item {
     private static final DustParticleEffect LILAC =
             new DustParticleEffect(new Vector3f(0.8196f, 0.1647f, 0.8588f), 3.0f);
 
-    public GravityHornItem(FabricItemSettings settings) {
+    public GravityHornItem(Settings settings) {
         super(settings.maxDamage(250));
     }
 

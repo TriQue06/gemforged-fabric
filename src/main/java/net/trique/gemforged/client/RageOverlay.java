@@ -4,9 +4,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.trique.gemforged.effect.GemforgedEffects;
@@ -17,8 +19,12 @@ public class RageOverlay implements HudRenderCallback {
     private static final int PERIOD_TICKS = 30;
     private static final int RED_RGB = 0x00FF0000;
 
+    public static void register() {
+        HudRenderCallback.EVENT.register(new RageOverlay());
+    }
+
     @Override
-    public void onHudRender(DrawContext context, float tickDelta) {
+    public void onHudRender(DrawContext drawContext, RenderTickCounter renderTickCounter) {
         MinecraftClient mc = MinecraftClient.getInstance();
         PlayerEntity player = mc.player;
         if (player == null || mc.options.getPerspective().isFirstPerson() == false) return;
@@ -26,7 +32,7 @@ public class RageOverlay implements HudRenderCallback {
         StatusEffect rageEffect = Registries.STATUS_EFFECT.get(GemforgedEffects.RAGE_ID);
         if (rageEffect == null) return;
 
-        StatusEffectInstance eff = player.getStatusEffect(rageEffect);
+        StatusEffectInstance eff = player.getStatusEffect((RegistryEntry<StatusEffect>) rageEffect);
         if (eff == null) return;
 
         long gt = player.getWorld().getTime();
@@ -42,11 +48,7 @@ public class RageOverlay implements HudRenderCallback {
 
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        context.fill(0, 0, width, height, color);
+        drawContext.fill(0, 0, width, height, color);
         RenderSystem.disableBlend();
-    }
-
-    public static void register() {
-        HudRenderCallback.EVENT.register(new RageOverlay());
     }
 }

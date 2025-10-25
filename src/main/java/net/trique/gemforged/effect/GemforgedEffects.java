@@ -8,14 +8,14 @@ import net.minecraft.util.Identifier;
 import net.trique.gemforged.Gemforged;
 
 public class GemforgedEffects {
-    public static final Identifier RAGE_ID = new Identifier(Gemforged.MOD_ID, "rage");
-    public static final Identifier PHOENIX_ID = new Identifier(Gemforged.MOD_ID, "phoenix");
+    public static final Identifier RAGE_ID = Identifier.of(Gemforged.MOD_ID, "rage");
+    public static final Identifier PHOENIX_ID = Identifier.of(Gemforged.MOD_ID, "phoenix");
 
     public static final StatusEffect RAGE = register("rage", new RageEffect());
     public static final StatusEffect PHOENIX = register("phoenix", new PhoenixEffect());
 
     private static StatusEffect register(String name, StatusEffect effect) {
-        return Registry.register(Registries.STATUS_EFFECT, new Identifier(Gemforged.MOD_ID, name), effect);
+        return Registry.register(Registries.STATUS_EFFECT, Identifier.of(Gemforged.MOD_ID, name), effect);
     }
 
     public static void registerEffects() {

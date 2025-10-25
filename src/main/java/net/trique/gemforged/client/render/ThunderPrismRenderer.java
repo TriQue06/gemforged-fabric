@@ -13,7 +13,7 @@ import net.trique.gemforged.Gemforged;
 import net.trique.gemforged.entity.ThunderPrismEntity;
 
 public class ThunderPrismRenderer extends EntityRenderer<ThunderPrismEntity> {
-    private static final Identifier TEXTURE = new Identifier(Gemforged.MOD_ID, "textures/item/thunder_prism.png");
+    private static final Identifier TEXTURE = Identifier.of(Gemforged.MOD_ID, "textures/item/thunder_prism.png");
 
     public ThunderPrismRenderer(EntityRendererFactory.Context context) {
         super(context);

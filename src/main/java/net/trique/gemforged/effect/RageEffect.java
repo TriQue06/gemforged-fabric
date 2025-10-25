@@ -4,6 +4,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.util.Identifier;
 
 import java.util.UUID;
 
@@ -18,11 +19,11 @@ public class RageEffect extends StatusEffect {
 
     public RageEffect() {
         super(StatusEffectCategory.BENEFICIAL, 0xB80E2A);
-        this.addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, MOVE_UUID.toString(),
-                BASE_MOVE_MULT, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
-        this.addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED, ATKSPD_UUID.toString(),
-                BASE_ATKSPD_MULT, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
-        this.addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, ATKDAM_UUID.toString(),
-                BASE_ATKDAM_MULT, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+        this.addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, Identifier.of(MOVE_UUID.toString()),
+                BASE_MOVE_MULT, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        this.addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED, Identifier.of(ATKSPD_UUID.toString()),
+                BASE_ATKSPD_MULT, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+        this.addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, Identifier.of(ATKDAM_UUID.toString()),
+                BASE_ATKDAM_MULT, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     }
 }

@@ -15,7 +15,7 @@ import net.trique.gemforged.item.GemforgedItems;
 
 public class VerdantTotemItem extends Item {
 
-    public VerdantTotemItem(FabricItemSettings settings) {
+    public VerdantTotemItem(Settings settings) {
         super(settings.maxDamage(250));
     }
 

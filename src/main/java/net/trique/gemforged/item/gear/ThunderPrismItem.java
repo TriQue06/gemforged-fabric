@@ -15,7 +15,7 @@ import net.trique.gemforged.item.GemforgedItems;
 
 public class ThunderPrismItem extends Item {
 
-    public ThunderPrismItem(FabricItemSettings settings) {
+    public ThunderPrismItem(Settings settings) {
         super(settings.maxDamage(250));
     }
 

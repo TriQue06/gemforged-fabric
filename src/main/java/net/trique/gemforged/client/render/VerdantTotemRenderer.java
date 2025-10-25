@@ -13,7 +13,7 @@ import net.trique.gemforged.Gemforged;
 import net.trique.gemforged.entity.VerdantTotemEntity;
 
 public class VerdantTotemRenderer extends EntityRenderer<VerdantTotemEntity> {
-    private static final Identifier TEXTURE = new Identifier(Gemforged.MOD_ID, "textures/item/verdant_totem.png");
+    private static final Identifier TEXTURE = Identifier.of(Gemforged.MOD_ID, "textures/item/verdant_totem.png");
 
     public VerdantTotemRenderer(EntityRendererFactory.Context context) {
         super(context);

@@ -33,7 +33,7 @@ public class PhoenixCharmItem extends Item {
     private static final DustParticleEffect YELLOW =
             new DustParticleEffect(new Vector3f(0.9725f, 0.7294f, 0.3843f), 2.0f);
 
-    public PhoenixCharmItem(FabricItemSettings settings) {
+    public PhoenixCharmItem(Settings settings) {
         super(settings.maxDamage(250));
     }
 

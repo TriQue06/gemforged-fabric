@@ -35,9 +35,9 @@ public class ThunderPrismEntity extends Entity implements FlyingItemEntity {
 
     public ThunderPrismEntity(World world, double x, double y, double z, PlayerEntity owner) {
         this(GemforgedEntities.THUNDER_PRISM, world);
-        this.setPos(x, y, z);
+        this.refreshPositionAfterTeleport(x, y, z); // ✅ setPos yerine
         this.owner = owner;
-        this.ownerId = owner.getUuid();
+        this.ownerId = owner != null ? owner.getUuid() : null;
     }
 
     @Override
@@ -100,6 +100,7 @@ public class ThunderPrismEntity extends Entity implements FlyingItemEntity {
 
         if (life > 120 && !getWorld().isClient) {
             discard();
+
             if (!storedItem.isEmpty()) {
                 ItemStack drop = storedItem.copy();
                 drop.setCount(1);
@@ -114,13 +115,14 @@ public class ThunderPrismEntity extends Entity implements FlyingItemEntity {
 
     private void triggerEffect() {
         Box area = getBoundingBox().expand(16);
-        List<LivingEntity> targets = getWorld().getEntitiesByClass(LivingEntity.class, area, e -> e.isAlive() && !isAlly(e));
+        List<LivingEntity> targets = getWorld().getEntitiesByClass(LivingEntity.class, area,
+                e -> e.isAlive() && !isAlly(e));
 
         for (LivingEntity target : targets) {
             for (int i = 0; i < 3; i++) {
                 LightningEntity bolt = EntityType.LIGHTNING_BOLT.create(getWorld());
                 if (bolt != null) {
-                    bolt.refreshPositionAndAngles(target.getX(), target.getY(), target.getZ(), 0.0F, 0.0F);
+                    bolt.refreshPositionAfterTeleport(target.getX(), target.getY(), target.getZ());
                     getWorld().spawnEntity(bolt);
                 }
             }
@@ -134,7 +136,8 @@ public class ThunderPrismEntity extends Entity implements FlyingItemEntity {
         if (entity == owner) return true;
         if (owner != null && owner.isTeammate(entity)) return true;
         if (entity instanceof TameableEntity t && owner != null && t.getOwner() == owner) return true;
-        if (entity instanceof AbstractHorseEntity h && owner != null && h.isTame() && owner.getUuid().equals(h.getOwnerUuid())) return true;
+        if (entity instanceof AbstractHorseEntity h && owner != null && h.isTame() && owner.getUuid().equals(h.getOwnerUuid()))
+            return true;
         return (entity instanceof IronGolemEntity || entity instanceof SnowGolemEntity);
     }
 
@@ -165,6 +168,7 @@ public class ThunderPrismEntity extends Entity implements FlyingItemEntity {
         nbt.putInt("Life", life);
     }
 
+    @Override
     public ItemStack getItem() {
         return storedItem.isEmpty() ? new ItemStack(GemforgedItems.THUNDER_PRISM) : storedItem;
     }
@@ -180,6 +184,6 @@ public class ThunderPrismEntity extends Entity implements FlyingItemEntity {
 
     @Override
     public ItemStack getStack() {
-        return null;
+        return getItem(); // ✅ FlyingItemEntity için doğru dönüş
     }
 }

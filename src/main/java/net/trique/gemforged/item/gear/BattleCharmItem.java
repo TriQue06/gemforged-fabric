@@ -47,7 +47,7 @@ public class BattleCharmItem extends Item {
     private static final DustParticleEffect DARK =
             new DustParticleEffect(new Vector3f(0.4667f, 0.1020f, 0.1608f), 1.6f * DUST_SIZE_SCALE);
 
-    public BattleCharmItem(FabricItemSettings settings) {
+    public BattleCharmItem(Settings settings) {
         super(settings.maxDamage(250));
     }
 

@@ -14,7 +14,7 @@ public class GemforgedEntities {
     public static final EntityType<ThunderPrismEntity> THUNDER_PRISM =
             Registry.register(
                     Registries.ENTITY_TYPE,
-                    new Identifier(Gemforged.MOD_ID, "thunder_prism"),
+                    Identifier.of(Gemforged.MOD_ID, "thunder_prism"),
                     FabricEntityTypeBuilder.<ThunderPrismEntity>create(SpawnGroup.MISC, ThunderPrismEntity::new)
                             .dimensions(EntityDimensions.fixed(0.5F, 0.5F))
                             .trackRangeBlocks(8)
@@ -25,7 +25,7 @@ public class GemforgedEntities {
     public static final EntityType<VerdantTotemEntity> VERDANT_TOTEM =
             Registry.register(
                     Registries.ENTITY_TYPE,
-                    new Identifier(Gemforged.MOD_ID, "verdant_totem"),
+                    Identifier.of(Gemforged.MOD_ID, "verdant_totem"),
                     FabricEntityTypeBuilder.<VerdantTotemEntity>create(SpawnGroup.MISC, VerdantTotemEntity::new)
                             .dimensions(EntityDimensions.fixed(0.5F, 0.5F))
                             .trackRangeBlocks(8)
