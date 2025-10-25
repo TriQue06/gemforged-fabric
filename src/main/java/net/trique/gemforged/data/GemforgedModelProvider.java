@@ -15,27 +15,15 @@ public class GemforgedModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.NYXITE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_NYXITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.NYXITE_BLOCK);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.BLOODSTONE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_BLOODSTONE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.BLOODSTONE_BLOCK);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.SOLARIUM_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_SOLARIUM_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.SOLARIUM_BLOCK);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.VENOMYTE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_VENOMYTE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.VENOMYTE_BLOCK);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.PHOENIXTONE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_PHOENIXTONE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.PHOENIXTONE_BLOCK);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.PRISMYTE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_PRISMYTE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.PRISMYTE_BLOCK);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.GRAVITIUM_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_GRAVITIUM_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.GRAVITIUM_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.RANDOM_GEM_VEIN);
+        blockStateModelGenerator.registerSimpleCubeAll(GemforgedBlocks.DEEPSLATE_RANDOM_GEM_VEIN);
     }
 
     @Override
