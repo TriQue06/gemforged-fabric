@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/TriQue06/gemforged-fabric"
 	},
 	"license": "MIT Licence",
 	"icon": "assets/gemforged/icon.png",
