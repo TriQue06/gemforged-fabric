@@ -19,41 +19,6 @@ public class GemforgedRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
-        offerSmelting(exporter, List.of(GemforgedBlocks.NYXITE_ORE, GemforgedBlocks.DEEPSLATE_NYXITE_ORE),
-                RecipeCategory.MISC, GemforgedItems.NYXITE, 1.0f, 200, "nyxite");
-        offerBlasting(exporter, List.of(GemforgedBlocks.NYXITE_ORE, GemforgedBlocks.DEEPSLATE_NYXITE_ORE),
-                RecipeCategory.MISC, GemforgedItems.NYXITE, 1.0f, 100, "nyxite");
-
-        offerSmelting(exporter, List.of(GemforgedBlocks.BLOODSTONE_ORE, GemforgedBlocks.DEEPSLATE_BLOODSTONE_ORE),
-                RecipeCategory.MISC, GemforgedItems.BLOODSTONE, 1.0f, 200, "bloodstone");
-        offerBlasting(exporter, List.of(GemforgedBlocks.BLOODSTONE_ORE, GemforgedBlocks.DEEPSLATE_BLOODSTONE_ORE),
-                RecipeCategory.MISC, GemforgedItems.BLOODSTONE, 1.0f, 100, "bloodstone");
-
-        offerSmelting(exporter, List.of(GemforgedBlocks.SOLARIUM_ORE, GemforgedBlocks.DEEPSLATE_SOLARIUM_ORE),
-                RecipeCategory.MISC, GemforgedItems.SOLARIUM, 1.0f, 200, "solarium");
-        offerBlasting(exporter, List.of(GemforgedBlocks.SOLARIUM_ORE, GemforgedBlocks.DEEPSLATE_SOLARIUM_ORE),
-                RecipeCategory.MISC, GemforgedItems.SOLARIUM, 1.0f, 100, "solarium");
-
-        offerSmelting(exporter, List.of(GemforgedBlocks.VENOMYTE_ORE, GemforgedBlocks.DEEPSLATE_VENOMYTE_ORE),
-                RecipeCategory.MISC, GemforgedItems.VENOMYTE, 1.0f, 200, "venomyte");
-        offerBlasting(exporter, List.of(GemforgedBlocks.VENOMYTE_ORE, GemforgedBlocks.DEEPSLATE_VENOMYTE_ORE),
-                RecipeCategory.MISC, GemforgedItems.VENOMYTE, 1.0f, 100, "venomyte");
-
-        offerSmelting(exporter, List.of(GemforgedBlocks.PHOENIXTONE_ORE, GemforgedBlocks.DEEPSLATE_PHOENIXTONE_ORE),
-                RecipeCategory.MISC, GemforgedItems.PHOENIXTONE, 1.0f, 200, "phoenixtone");
-        offerBlasting(exporter, List.of(GemforgedBlocks.PHOENIXTONE_ORE, GemforgedBlocks.DEEPSLATE_PHOENIXTONE_ORE),
-                RecipeCategory.MISC, GemforgedItems.PHOENIXTONE, 1.0f, 100, "phoenixtone");
-
-        offerSmelting(exporter, List.of(GemforgedBlocks.PRISMYTE_ORE, GemforgedBlocks.DEEPSLATE_PRISMYTE_ORE),
-                RecipeCategory.MISC, GemforgedItems.PRISMYTE, 1.0f, 200, "prismyte");
-        offerBlasting(exporter, List.of(GemforgedBlocks.PRISMYTE_ORE, GemforgedBlocks.DEEPSLATE_PRISMYTE_ORE),
-                RecipeCategory.MISC, GemforgedItems.PRISMYTE, 1.0f, 100, "prismyte");
-
-        offerSmelting(exporter, List.of(GemforgedBlocks.GRAVITIUM_ORE, GemforgedBlocks.DEEPSLATE_GRAVITIUM_ORE),
-                RecipeCategory.MISC, GemforgedItems.GRAVITIUM, 1.0f, 200, "gravitium");
-        offerBlasting(exporter, List.of(GemforgedBlocks.GRAVITIUM_ORE, GemforgedBlocks.DEEPSLATE_GRAVITIUM_ORE),
-                RecipeCategory.MISC, GemforgedItems.GRAVITIUM, 1.0f, 100, "gravitium");
-
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, GemforgedItems.NYXITE, RecipeCategory.DECORATIONS, GemforgedBlocks.NYXITE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, GemforgedItems.BLOODSTONE, RecipeCategory.DECORATIONS, GemforgedBlocks.BLOODSTONE_BLOCK);
         offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, GemforgedItems.SOLARIUM, RecipeCategory.DECORATIONS, GemforgedBlocks.SOLARIUM_BLOCK);

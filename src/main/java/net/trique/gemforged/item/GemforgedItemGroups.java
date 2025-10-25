@@ -25,33 +25,12 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedItems.PHOENIXTONE);
                         entries.add(GemforgedItems.PRISMYTE);
                         entries.add(GemforgedItems.GRAVITIUM);
-
-                        entries.add(GemforgedBlocks.NYXITE_ORE);
-                        entries.add(GemforgedBlocks.DEEPSLATE_NYXITE_ORE);
                         entries.add(GemforgedBlocks.NYXITE_BLOCK);
-
-                        entries.add(GemforgedBlocks.BLOODSTONE_ORE);
-                        entries.add(GemforgedBlocks.DEEPSLATE_BLOODSTONE_ORE);
                         entries.add(GemforgedBlocks.BLOODSTONE_BLOCK);
-
-                        entries.add(GemforgedBlocks.SOLARIUM_ORE);
-                        entries.add(GemforgedBlocks.DEEPSLATE_SOLARIUM_ORE);
                         entries.add(GemforgedBlocks.SOLARIUM_BLOCK);
-
-                        entries.add(GemforgedBlocks.VENOMYTE_ORE);
-                        entries.add(GemforgedBlocks.DEEPSLATE_VENOMYTE_ORE);
                         entries.add(GemforgedBlocks.VENOMYTE_BLOCK);
-
-                        entries.add(GemforgedBlocks.PHOENIXTONE_ORE);
-                        entries.add(GemforgedBlocks.DEEPSLATE_PHOENIXTONE_ORE);
                         entries.add(GemforgedBlocks.PHOENIXTONE_BLOCK);
-
-                        entries.add(GemforgedBlocks.PRISMYTE_ORE);
-                        entries.add(GemforgedBlocks.DEEPSLATE_PRISMYTE_ORE);
                         entries.add(GemforgedBlocks.PRISMYTE_BLOCK);
-
-                        entries.add(GemforgedBlocks.GRAVITIUM_ORE);
-                        entries.add(GemforgedBlocks.DEEPSLATE_GRAVITIUM_ORE);
                         entries.add(GemforgedBlocks.GRAVITIUM_BLOCK);
 
                         entries.add(GemforgedItems.SHADOWSTEP_DAGGER);

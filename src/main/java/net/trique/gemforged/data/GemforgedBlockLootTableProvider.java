@@ -10,7 +10,6 @@ import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
-import net.minecraft.loot.function.ApplyExplosionDecayLootFunction;
 import net.minecraft.loot.function.ExplosionDecayLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
@@ -18,7 +17,6 @@ import net.trique.gemforged.block.GemforgedBlocks;
 import net.trique.gemforged.item.GemforgedItems;
 
 public class GemforgedBlockLootTableProvider extends FabricBlockLootTableProvider {
-
     public GemforgedBlockLootTableProvider(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
@@ -35,14 +33,6 @@ public class GemforgedBlockLootTableProvider extends FabricBlockLootTableProvide
 
         addDrop(GemforgedBlocks.RANDOM_GEM_VEIN, block -> randomOreDrop(block));
         addDrop(GemforgedBlocks.DEEPSLATE_RANDOM_GEM_VEIN, block -> randomOreDrop(block));
-    }
-
-    private LootTable.Builder oreDrops(Block block, Item item) {
-        return BlockLootTableGenerator.dropsWithSilkTouch(block,
-                applyExplosionDecay(block,
-                        ItemEntry.builder(item)
-                                .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f)))
-                                .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))));
     }
 
     private LootTable.Builder randomOreDrop(Block block) {
