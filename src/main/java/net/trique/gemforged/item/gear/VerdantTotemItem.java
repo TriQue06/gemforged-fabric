@@ -44,7 +44,7 @@ public class VerdantTotemItem extends Item {
                 totem.setItem(totemStack);
                 world.spawnEntity(totem);
 
-                user.getItemCooldownManager().set(this, 20 * 30);
+                user.getItemCooldownManager().set(this, 20 * 40);
 
                 if (!creative) {
                     chargeResource.decrement(1);

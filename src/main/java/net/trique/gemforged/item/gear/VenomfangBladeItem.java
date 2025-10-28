@@ -21,24 +21,23 @@ import org.joml.Vector3f;
 public class VenomfangBladeItem extends SwordItem {
     private static final int HIT_THRESHOLD = 3;
     private static final int SUPER_THRESHOLD = 10;
-    private static final float MAGIC_DAMAGE = 4.0f;
+    private static final float MAGIC_DAMAGE = 5.0f;
     private static final float WAVE_MAX_RADIUS = 7.0f;
     private static final int WAVE_FRAMES = 16;
-    private static final int WAVE_FRAME_STEP = 2;
     private static final int WAVE_COUNT = 3;
     private static final int WAVE_GAP_TICKS = 6;
-    private static final int POISON_DURATION = 10 * 20;
-    private static final int WITHER_DURATION = 10 * 20;
+    private static final int POISON_DURATION = 20 * 15;
+    private static final int WITHER_DURATION = 20 * 15;
     private static final double KNOCKBACK_STRENGTH = 1.5;
-    private static final double KNOCKBACK_VERTICAL = 0.25;
+    private static final double KNOCKBACK_VERTICAL = 0.5;
     private static final Vector3f GREEN = new Vector3f(0.1961f, 0.7451f, 0.5529f);
     private static final float GREEN_SCALE = 1.8f;
     private static final Vector3f DARK_GREEN = new Vector3f(0.0706f, 0.2549f, 0.1608f);
-    private static final Vector3f WITHER = new Vector3f(0.1608f, 0.1608f, 0.1608f);
+    private static final Vector3f WITHER_BLACK = new Vector3f(0.1608f, 0.1608f, 0.1608f);
     private static final float DARK_SCALE = 2.1f;
 
     public VenomfangBladeItem(Settings settings) {
-        super(ToolMaterials.DIAMOND, 2, -2.0f, settings);
+        super(ToolMaterials.IRON, 2, -2.0f, settings);
     }
 
     @Override
@@ -129,7 +128,7 @@ public class VenomfangBladeItem extends SwordItem {
             float rad = t * WAVE_MAX_RADIUS;
             float fade = 1.0f - t;
             spawnRing(world, center, rad, 2.0, fade, DARK_GREEN, DARK_SCALE);
-            spawnRing(world, center, rad, 2.0, fade, WITHER, DARK_SCALE);
+            spawnRing(world, center, rad, 2.0, fade, WITHER_BLACK, DARK_SCALE);
             world.spawnParticles(ParticleTypes.SMOKE, center.x, center.y, center.z, 8, rad * 0.2, 0.2, rad * 0.2, 0.01);
         }
 

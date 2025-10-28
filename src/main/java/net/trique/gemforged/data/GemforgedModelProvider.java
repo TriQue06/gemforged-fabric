@@ -36,7 +36,7 @@ public class GemforgedModelProvider extends FabricModelProvider {
         itemModelGenerator.register(GemforgedItems.PHOENIX_CHARM, Models.HANDHELD);
         itemModelGenerator.register(GemforgedItems.THUNDER_PRISM, Models.HANDHELD);
         itemModelGenerator.register(GemforgedItems.GRAVITY_HORN, Models.HANDHELD);
-        itemModelGenerator.register(GemforgedItems.VERDANT_TOTEM, Models.HANDHELD);
+        itemModelGenerator.register(GemforgedItems.VERDANT_TOTEM, Models.GENERATED);
 
         itemModelGenerator.register(GemforgedItems.NYXITE, Models.GENERATED);
         itemModelGenerator.register(GemforgedItems.BLOODSTONE, Models.GENERATED);

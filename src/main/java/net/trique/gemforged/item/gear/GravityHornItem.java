@@ -27,6 +27,8 @@ public class GravityHornItem extends Item {
     private static final float RADIUS = 16f;
     private static final int COOLDOWN_TICKS = 20 * 30;
     private static final int USE_DURATION_TICKS = 20;
+    private static final int LEVITATION_DURATION = 20 * 2;
+    private static final int LEVITATION_AMPLIFIER = 4;
 
     private static final DustParticleEffect PURPLE =
             new DustParticleEffect(new Vector3f(0.3843f, 0.0784f, 0.4078f), 3.0f);
@@ -50,14 +52,10 @@ public class GravityHornItem extends Item {
     }
 
     @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.TOOT_HORN;
-    }
+    public UseAction getUseAction(ItemStack stack) { return UseAction.TOOT_HORN; }
 
     @Override
-    public int getMaxUseTime(ItemStack stack) {
-        return USE_DURATION_TICKS;
-    }
+    public int getMaxUseTime(ItemStack stack) { return USE_DURATION_TICKS; }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
@@ -110,7 +108,7 @@ public class GravityHornItem extends Item {
                 e -> e.isAlive() && e != player);
 
         for (LivingEntity e : targets) {
-            e.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 20 * 5, 2, true, true));
+            e.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, LEVITATION_DURATION, LEVITATION_AMPLIFIER, true, true));
         }
     }
 
@@ -119,7 +117,7 @@ public class GravityHornItem extends Item {
         for (int i = 0; i < points; i++) {
             double a = (Math.PI * 2 * i) / points;
             double px = cx + radius * Math.cos(a);
-            double pz = cz + radius * Math.sin(a);
+            double pz = cz + Math.sin(a) * radius;
             double py = cy + (world.random.nextDouble() - 0.5) * heightSpread * 2;
             world.spawnParticles(dust, px, py, pz, 2, 0.04, 0.04, 0.04, 0.01);
         }
@@ -132,8 +130,8 @@ public class GravityHornItem extends Item {
 
         for (int i = 0; i < points; i++) {
             double angle = 2 * Math.PI * i / points - Math.PI / 2;
-            xs[i] = cx + radius * Math.cos(angle);
-            zs[i] = cz + radius * Math.sin(angle);
+            xs[i] = cx + Math.cos(angle) * radius;
+            zs[i] = cz + Math.sin(angle) * radius;
         }
 
         for (int i = 0; i < points; i++) {
