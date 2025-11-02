@@ -30,6 +30,7 @@ public class GemforgedItemGroups {
 
                         entries.add(GemforgedItems.BATTLE_CHARM);
                         entries.add(GemforgedItems.PHOENIX_CHARM);
+                        entries.add(GemforgedItems.PHOENIXFIRE_STAFF);
                         entries.add(GemforgedItems.SANDBURST_STAFF);
                         entries.add(GemforgedItems.VERDANT_TOTEM);
                         entries.add(GemforgedItems.VENOMFANG_BLADE);

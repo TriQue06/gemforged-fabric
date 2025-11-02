@@ -29,6 +29,8 @@ public class GemforgedItems {
             new GravityHornItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
     public static final Item VERDANT_TOTEM = registerItem("verdant_totem",
             new VerdantTotemItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
+    public static final Item PHOENIXFIRE_STAFF = registerItem("phoenixfire_staff",
+            new PhoenixfireStaffItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC).maxDamage(240)));
 
     public static final Item NYXITE = registerItem("nyxite",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON)));

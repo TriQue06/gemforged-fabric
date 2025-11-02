@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gemforged:item/totem_template"
+    "layer0": "gemforged:item/phoenixfire_staff"
   }
 }
