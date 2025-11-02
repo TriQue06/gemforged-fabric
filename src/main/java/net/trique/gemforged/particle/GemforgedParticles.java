@@ -12,7 +12,7 @@ public class GemforgedParticles {
     public static final DefaultParticleType PHOENIX_BEAM =
             FabricParticleTypes.simple(true);
 
-    public static void register() {
+    public static void registerParticles() {
         Registry.register(
                 Registries.PARTICLE_TYPE,
                 new Identifier(Gemforged.MOD_ID, "phoenix_beam"),

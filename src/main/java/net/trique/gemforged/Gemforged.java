@@ -9,6 +9,7 @@ import net.trique.gemforged.item.GemforgedItemGroups;
 import net.trique.gemforged.item.GemforgedItems;
 import net.trique.gemforged.effect.GemforgedEffects;
 import net.trique.gemforged.entity.GemforgedEntities;
+import net.trique.gemforged.particle.GemforgedParticles;
 import net.trique.gemforged.util.GemforgedLootTableModifiers;
 import net.trique.gemforged.world.GemforgedConfiguredFeatures;
 import net.trique.gemforged.world.GemforgedPlacedFeatures;
@@ -30,6 +31,7 @@ public class Gemforged implements ModInitializer {
         GemforgedBlocks.registerModBlocks();
         GemforgedItemGroups.registerItemGroups();
         GemforgedEffects.registerEffects();
+        GemforgedParticles.registerParticles();
         GemforgedEntities.registerEntities();
         GemforgedLootTableModifiers.register();
         PhoenixRelicEvents.register();

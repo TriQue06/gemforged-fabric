@@ -33,6 +33,17 @@ public class GemforgedEntities {
                             .build()
             );
 
+    public static final EntityType<GhostArrowEntity> GHOST_ARROW =
+            Registry.register(
+                    Registries.ENTITY_TYPE,
+                    new Identifier(Gemforged.MOD_ID, "ghost_arrow"),
+                    FabricEntityTypeBuilder.<GhostArrowEntity>create(SpawnGroup.MISC, GhostArrowEntity::new)
+                            .dimensions(EntityDimensions.fixed(0.5F, 0.5F))
+                            .trackRangeBlocks(64)
+                            .trackedUpdateRate(20)
+                            .build()
+            );
+
     public static void registerEntities() {
         Gemforged.LOGGER.info("Registering entities for " + Gemforged.MOD_ID);
     }

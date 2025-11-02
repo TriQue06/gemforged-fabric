@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.client.particle.SonicBoomParticle;
 import net.trique.gemforged.client.RageOverlay;
+import net.trique.gemforged.client.render.GhostArrowEntityRenderer;
 import net.trique.gemforged.client.render.VerdantTotemRenderer;
 import net.trique.gemforged.entity.GemforgedEntities;
 import net.trique.gemforged.client.render.ThunderPrismRenderer;
@@ -23,6 +24,7 @@ public class GemforgedClient implements ClientModInitializer {
         HudRenderCallback.EVENT.register(new RageOverlay());
         EntityRendererRegistry.register(GemforgedEntities.THUNDER_PRISM, ThunderPrismRenderer::new);
         EntityRendererRegistry.register(GemforgedEntities.VERDANT_TOTEM, VerdantTotemRenderer::new);
+        EntityRendererRegistry.register(GemforgedEntities.GHOST_ARROW, GhostArrowEntityRenderer::new);
 
         ParticleFactoryRegistry.getInstance().register(
                 GemforgedParticles.PHOENIX_BEAM,

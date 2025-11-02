@@ -35,6 +35,7 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedItems.VERDANT_TOTEM);
                         entries.add(GemforgedItems.VENOMFANG_BLADE);
                         entries.add(GemforgedItems.THUNDER_PRISM);
+                        entries.add(GemforgedItems.GHOST_BOW);
                         entries.add(GemforgedItems.SHADOWSTEP_DAGGER);
                         entries.add(GemforgedItems.GRAVITY_HORN);
 

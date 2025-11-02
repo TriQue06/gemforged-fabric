@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "gemforged:item/phoenixfire_staff"
+    "layer0": "gemforged:item/glacial_charm"
   }
 }
