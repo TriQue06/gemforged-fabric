@@ -3,13 +3,13 @@
   "category": "equipment",
   "ingredients": [
     {
-      "item": "gemforged:prism_template"
+      "item": "gemforged:bow_template"
     },
     {
-      "item": "gemforged:prismyte"
+      "item": "gemforged:nyxite"
     }
   ],
   "result": {
-    "item": "gemforged:thunder_prism"
+    "item": "gemforged:ghost_bow"
   }
 }

@@ -21,6 +21,7 @@ public final class GemforgedLootTableModifiers {
     private static final Identifier END_CITY_TREASURE = new Identifier("minecraft", "chests/end_city_treasure");
     private static final Identifier OCEAN_RUIN_COLD_ARCH = new Identifier("minecraft", "archaeology/ocean_ruin_cold");
     private static final Identifier PILLAGER_OUTPOST = new Identifier("minecraft", "chests/pillager_outpost");
+    private static final Identifier WOODLAND_MANSION = new Identifier("minecraft", "chests/woodland_mansion");
 
     public static void register() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
@@ -40,6 +41,8 @@ public final class GemforgedLootTableModifiers {
                 tableBuilder.pool(makePoolWithChance(ItemEntry.builder(GemforgedItems.HORN_TEMPLATE), 0.25f));
             } else if (id.equals(PILLAGER_OUTPOST)) {
                 tableBuilder.pool(makePoolWithChance(ItemEntry.builder(GemforgedItems.TOTEM_TEMPLATE), 0.25f));
+            } else if (id.equals(WOODLAND_MANSION)) {
+                tableBuilder.pool(makePoolWithChance(ItemEntry.builder(GemforgedItems.BOW_TEMPLATE), 0.50f));
             }
         });
     }

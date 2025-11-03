@@ -18,12 +18,12 @@ import net.trique.gemforged.item.GemforgedItems;
 
 public class GhostBowItem extends BowItem {
 
-    public static final float BASE_DAMAGE = 4.0F;
+    public static final float BASE_DAMAGE = 3.0F;
     public static final float BONUS_MAGIC_DAMAGE = 1.0F;
     public static final int COOLDOWN_TICKS = 100;
 
     public GhostBowItem(Settings settings) {
-        super(settings.maxDamage(450));
+        super(settings.maxDamage(240));
     }
 
     @Override
@@ -60,10 +60,8 @@ public class GhostBowItem extends BowItem {
             GhostArrowEntity arrow = new GhostArrowEntity(GemforgedEntities.GHOST_ARROW, world);
             arrow.setOwner(player);
 
-            // ✅ Ok spawn pozisyonu düzeltildi — göz hizası
             arrow.setPos(player.getX(), player.getEyeY() - 0.1, player.getZ());
 
-            // ✅ Vanilla hız & dağılım
             arrow.setVelocity(player, player.getPitch(), player.getYaw(), 0.0F, power * 3.0F, 1.0F);
 
             arrow.setDamage(BASE_DAMAGE + BONUS_MAGIC_DAMAGE);
@@ -71,12 +69,10 @@ public class GhostBowItem extends BowItem {
 
             world.spawnEntity(arrow);
 
-            // ✅ Ses
             world.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS,
                     1.0F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 1.2F) + (power * 0.5F));
 
-            // ✅ Kreatif değilse -> tüketim & cooldown
             if (!player.getAbilities().creativeMode) {
                 consumeNyxite(player);
                 stack.damage(1, player, p -> p.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));

@@ -3,13 +3,13 @@
   "category": "equipment",
   "ingredients": [
     {
-      "item": "gemforged:prism_template"
+      "item": "gemforged:charm_template"
     },
     {
       "item": "gemforged:prismyte"
     }
   ],
   "result": {
-    "item": "gemforged:thunder_prism"
+    "item": "gemforged:glacial_charm"
   }
 }

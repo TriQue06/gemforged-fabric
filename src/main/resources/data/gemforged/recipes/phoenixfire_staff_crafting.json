@@ -3,13 +3,13 @@
   "category": "equipment",
   "ingredients": [
     {
-      "item": "gemforged:prism_template"
+      "item": "gemforged:staff_template"
     },
     {
-      "item": "gemforged:prismyte"
+      "item": "gemforged:phoenixtone"
     }
   ],
   "result": {
-    "item": "gemforged:thunder_prism"
+    "item": "gemforged:phoenixfire_staff"
   }
 }

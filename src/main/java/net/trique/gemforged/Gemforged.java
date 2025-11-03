@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.trique.gemforged.block.GemforgedBlocks;
+import net.trique.gemforged.event.GlacialCharmEvents;
 import net.trique.gemforged.event.PhoenixRelicEvents;
 import net.trique.gemforged.item.GemforgedItemGroups;
 import net.trique.gemforged.item.GemforgedItems;
@@ -36,6 +37,7 @@ public class Gemforged implements ModInitializer {
         GemforgedLootTableModifiers.register();
         PhoenixRelicEvents.register();
         GemforgedWorldGeneration.generateGemforgedWorldGen();
+        GlacialCharmEvents.register();
         LOGGER.info("Gemforged initialized successfully!");
     }
 }

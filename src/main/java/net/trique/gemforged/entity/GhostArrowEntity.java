@@ -1,56 +1,57 @@
 package net.trique.gemforged.entity;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MovementType;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.*;
+import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleTypes;
+import net.minecraft.item.Items;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
-import net.minecraft.entity.projectile.ProjectileUtil;
 
-public class GhostArrowEntity extends PersistentProjectileEntity {
+public class GhostArrowEntity extends ArrowEntity {
 
-    private static final int MAX_LIFETIME = 60; // 3 saniye
+    private static final int MAX_LIFETIME = 60;
     private int lifetime = 0;
 
     public GhostArrowEntity(EntityType<? extends GhostArrowEntity> type, World world) {
         super(type, world);
-        this.pickupType = PickupPermission.DISALLOWED;
-        this.setNoClip(true);
+        init();
     }
 
-    public GhostArrowEntity(EntityType<? extends GhostArrowEntity> type, LivingEntity owner, World world) {
-        super(type, owner, world);
-        this.pickupType = PickupPermission.DISALLOWED;
+    public GhostArrowEntity(World world, LivingEntity owner) {
+        super(world, owner);
+        init();
+    }
+
+    private void init() {
         this.setNoClip(true);
+        this.pickupType = PickupPermission.DISALLOWED;
     }
 
     @Override
     public void tick() {
-        super.tick();
 
-        lifetime++;
-        if (!getWorld().isClient && lifetime >= MAX_LIFETIME) {
-            this.discard();
-            return;
+        // ✅ Super çağırmıyoruz, kendi physics’imiz
+        Vec3d vel = this.getVelocity();
+
+        if (!this.hasNoGravity()) {
+            vel = vel.add(0.0D, -0.05D, 0.0D);
+            this.setVelocity(vel);
         }
 
-        Vec3d velocity = getVelocity();
-        Vec3d start = getPos();
-        Vec3d end = start.add(velocity);
+        Vec3d pos = this.getPos();
+        Vec3d nextPos = pos.add(vel);
 
-        // ✅ SADECE ENTITY COLLISION ALGILAR
-        EntityHitResult hit = ProjectileUtil.getEntityCollision(
-                this.getWorld(), this,
-                start, end,
-                this.getBoundingBox().stretch(velocity).expand(1.0),
-                entity -> entity instanceof LivingEntity && entity != this.getOwner()
+        EntityHitResult hit = ProjectileUtil.raycast(
+                this,
+                pos,
+                nextPos,
+                this.getBoundingBox().stretch(vel).expand(0.8D),
+                e -> e instanceof LivingEntity
+                        && e.isAlive()
+                        && e != this.getOwner(),
+                0
         );
 
         if (hit != null) {
@@ -58,53 +59,26 @@ public class GhostArrowEntity extends PersistentProjectileEntity {
             return;
         }
 
-        // ✅ Parçacık izi
-        for (int i = 0; i < 2; i++) {
-            this.getWorld().addParticle(ParticleTypes.SOUL_FIRE_FLAME,
-                    this.getX() - velocity.x * i * 0.2,
-                    this.getY() - velocity.y * i * 0.2,
-                    this.getZ() - velocity.z * i * 0.2,
-                    0, 0, 0);
-        }
+        // ✅ collision olmadan hareket
+        this.move(MovementType.SELF, vel);
 
-        // ✅ VANILLA ARROW MOVEMENT → DOĞRU ÇARPIŞMA
-        this.move(MovementType.SELF, velocity);
+        // ✅ Yönü velocity ile güncelle
+        this.setYaw((float)(Math.atan2(vel.x, vel.z) * 180.0D / Math.PI));
+        this.setPitch((float)(Math.atan2(vel.y, vel.horizontalLength()) * 180.0D / Math.PI));
 
-        // ✅ Gravity & drag (vanilla kullandığı için sadece gravity şart)
-        if (!this.hasNoGravity()) {
-            this.setVelocity(velocity.add(0, -0.05, 0));
+        if (++lifetime >= MAX_LIFETIME && !getWorld().isClient) {
+            this.discard();
         }
     }
 
     @Override
     protected void onEntityHit(EntityHitResult hitResult) {
         super.onEntityHit(hitResult);
-
-        Entity target = hitResult.getEntity();
-        Entity owner = this.getOwner();
-
-        if (!getWorld().isClient && target instanceof LivingEntity living) {
-
-            // ✅ VANILLA DAMAGE HESABI → SÜPER!
-            float damage = (float) this.getDamage();
-            if (this.isCritical()) {
-                damage += this.random.nextFloat() * damage * 0.25f + 0.5f;
-            }
-
-            // ✅ Hasar gönder
-            living.damage(this.getDamageSources().arrow(this, owner), damage);
-
-            // ✅ Sadece damage, knockback vanilla kalır
-            this.discard();
-        }
+        if (!getWorld().isClient) this.discard();
     }
 
     @Override
     protected ItemStack asItemStack() {
-        return ItemStack.EMPTY;
-    }
-
-    protected boolean shouldHit(Entity entity) {
-        return entity != this.getOwner();
+        return new ItemStack(Items.AIR);
     }
 }

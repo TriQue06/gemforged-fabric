@@ -9,7 +9,6 @@ import net.minecraft.util.Identifier;
 import net.trique.gemforged.block.GemforgedBlocks;
 import net.trique.gemforged.item.GemforgedItems;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class GemforgedRecipeProvider extends FabricRecipeProvider {
@@ -33,7 +32,7 @@ public class GemforgedRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(GemforgedItems.DAGGER_TEMPLATE), conditionsFromItem(GemforgedItems.DAGGER_TEMPLATE))
                 .offerTo(exporter, new Identifier("gemforged", "shadowstep_dagger_crafting"));
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, GemforgedItems.BATTLE_CHARM)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, GemforgedItems.BATTLE_CHARM)
                 .input(GemforgedItems.CHARM_TEMPLATE)
                 .input(GemforgedItems.BLOODSTONE)
                 .criterion(hasItem(GemforgedItems.CHARM_TEMPLATE), conditionsFromItem(GemforgedItems.CHARM_TEMPLATE))
@@ -51,13 +50,13 @@ public class GemforgedRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(GemforgedItems.BLADE_TEMPLATE), conditionsFromItem(GemforgedItems.BLADE_TEMPLATE))
                 .offerTo(exporter, new Identifier("gemforged", "venomfang_blade_crafting"));
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, GemforgedItems.PHOENIX_CHARM)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, GemforgedItems.PHOENIX_CHARM)
                 .input(GemforgedItems.CHARM_TEMPLATE)
                 .input(GemforgedItems.PHOENIXTONE)
                 .criterion(hasItem(GemforgedItems.CHARM_TEMPLATE), conditionsFromItem(GemforgedItems.CHARM_TEMPLATE))
                 .offerTo(exporter, new Identifier("gemforged", "phoenix_charm_crafting"));
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, GemforgedItems.THUNDER_PRISM)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, GemforgedItems.THUNDER_PRISM)
                 .input(GemforgedItems.PRISM_TEMPLATE)
                 .input(GemforgedItems.PRISMYTE)
                 .criterion(hasItem(GemforgedItems.PRISM_TEMPLATE), conditionsFromItem(GemforgedItems.PRISM_TEMPLATE))
@@ -68,5 +67,23 @@ public class GemforgedRecipeProvider extends FabricRecipeProvider {
                 .input(GemforgedItems.GRAVITIUM)
                 .criterion(hasItem(GemforgedItems.HORN_TEMPLATE), conditionsFromItem(GemforgedItems.HORN_TEMPLATE))
                 .offerTo(exporter, new Identifier("gemforged", "gravity_horn_crafting"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, GemforgedItems.GHOST_BOW)
+                .input(GemforgedItems.BOW_TEMPLATE)
+                .input(GemforgedItems.NYXITE)
+                .criterion(hasItem(GemforgedItems.BOW_TEMPLATE), conditionsFromItem(GemforgedItems.BOW_TEMPLATE))
+                .offerTo(exporter, new Identifier("gemforged", "ghost_bow_crafting"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, GemforgedItems.PHOENIXFIRE_STAFF)
+                .input(GemforgedItems.STAFF_TEMPLATE)
+                .input(GemforgedItems.PHOENIXTONE)
+                .criterion(hasItem(GemforgedItems.STAFF_TEMPLATE), conditionsFromItem(GemforgedItems.STAFF_TEMPLATE))
+                .offerTo(exporter, new Identifier("gemforged", "phoenixfire_staff_crafting"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, GemforgedItems.GLACIAL_CHARM)
+                .input(GemforgedItems.CHARM_TEMPLATE)
+                .input(GemforgedItems.PRISMYTE)
+                .criterion(hasItem(GemforgedItems.CHARM_TEMPLATE), conditionsFromItem(GemforgedItems.CHARM_TEMPLATE))
+                .offerTo(exporter, new Identifier("gemforged", "glacial_charm_crafting"));
     }
 }

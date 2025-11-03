@@ -37,7 +37,8 @@ public class GemforgedModelProvider extends FabricModelProvider {
         itemModelGenerator.register(GemforgedItems.THUNDER_PRISM, Models.HANDHELD);
         itemModelGenerator.register(GemforgedItems.GRAVITY_HORN, Models.HANDHELD);
         itemModelGenerator.register(GemforgedItems.VERDANT_TOTEM, Models.GENERATED);
-        itemModelGenerator.register(GemforgedItems.PHOENIXFIRE_STAFF, Models.GENERATED);
+        itemModelGenerator.register(GemforgedItems.PHOENIXFIRE_STAFF, Models.HANDHELD);
+        itemModelGenerator.register(GemforgedItems.GLACIAL_CHARM, Models.HANDHELD);
 
         itemModelGenerator.register(GemforgedItems.NYXITE, Models.GENERATED);
         itemModelGenerator.register(GemforgedItems.BLOODSTONE, Models.GENERATED);
@@ -55,5 +56,6 @@ public class GemforgedModelProvider extends FabricModelProvider {
         itemModelGenerator.register(GemforgedItems.BLADE_TEMPLATE, Models.HANDHELD);
         itemModelGenerator.register(GemforgedItems.HORN_TEMPLATE, Models.HANDHELD);
         itemModelGenerator.register(GemforgedItems.TOTEM_TEMPLATE, Models.GENERATED);
+        itemModelGenerator.register(GemforgedItems.BOW_TEMPLATE, Models.HANDHELD);
     }
 }

@@ -33,6 +33,8 @@ public class GemforgedItems {
             new GhostBowItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC).maxDamage(240)));
     public static final Item PHOENIXFIRE_STAFF = registerItem("phoenixfire_staff",
             new PhoenixfireStaffItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC).maxDamage(240)));
+    public static final Item GLACIAL_CHARM = registerItem("glacial_charm",
+            new GlacialCharmItem(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC).maxDamage(240)));
 
     public static final Item NYXITE = registerItem("nyxite",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
@@ -64,6 +66,8 @@ public class GemforgedItems {
     public static final Item HORN_TEMPLATE = registerItem("horn_template",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxCount(1)));
     public static final Item TOTEM_TEMPLATE = registerItem("totem_template",
+            new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxCount(1)));
+    public static final Item BOW_TEMPLATE = registerItem("bow_template",
             new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxCount(1)));
 
     private static Item registerItem(String name, Item item) {

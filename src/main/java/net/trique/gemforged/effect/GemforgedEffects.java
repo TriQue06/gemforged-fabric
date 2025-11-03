@@ -13,6 +13,7 @@ public class GemforgedEffects {
 
     public static final StatusEffect RAGE = register("rage", new RageEffect());
     public static final StatusEffect PHOENIX = register("phoenix", new PhoenixEffect());
+    public static final StatusEffect GLACIAL_FIST = register("glacial_fist", new GlacialFistEffect());
 
     private static StatusEffect register(String name, StatusEffect effect) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(Gemforged.MOD_ID, name), effect);
