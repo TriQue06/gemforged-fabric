@@ -17,8 +17,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
@@ -29,18 +27,26 @@ import org.joml.Vector3f;
 import java.util.UUID;
 
 public class ShadowstepDaggerItem extends SwordItem {
+
     private static final String TAG_COMBO = "onyx_combo";
-    private static final String TAG_LASTHIT = "onyx_last_hit";
+    private static final String TAG_ACTIVE_UNTIL = "onyx_active_until";
+
     private static final int MAX_COMBO = 6;
-    private static final int COMBO_TIMEOUT_TICKS = 60;
+    private static final int COMBO_ACTIVE_TICKS = 20 * 5;
     private static final int COOLDOWN_TICKS = 20 * 30;
-    private static final double TP_MIN = 2.0, TP_MAX = 3.0;
 
-    private static final UUID MOD_DAMAGE_ID = UUID.nameUUIDFromBytes("gemforged_onyx_combo_damage".getBytes());
-    private static final UUID MOD_SPEED_ID = UUID.nameUUIDFromBytes("gemforged_onyx_combo_speed".getBytes());
+    private static final double TP_MIN = 2.0;
+    private static final double TP_MAX = 3.0;
 
-    private static final Vector3f SHADOW_PURPLE = new Vector3f(0.2627f, 0.1569f, 0.3843f);
-    private static final Vector3f SHADOW_LIGHT = new Vector3f(0.4745f, 0.3294f, 0.6118f);
+    private static final UUID MOD_DAMAGE_ID =
+            UUID.nameUUIDFromBytes("gemforged_onyx_combo_damage".getBytes());
+    private static final UUID MOD_SPEED_ID =
+            UUID.nameUUIDFromBytes("gemforged_onyx_combo_speed".getBytes());
+
+    private static final Vector3f SHADOW_PURPLE =
+            new Vector3f(0.2627f, 0.1569f, 0.3843f);
+    private static final Vector3f SHADOW_LIGHT =
+            new Vector3f(0.4745f, 0.3294f, 0.6118f);
 
     public ShadowstepDaggerItem(FabricItemSettings settings) {
         super(ToolMaterials.IRON, 2, -2.0f, settings.maxDamage(250));
@@ -54,13 +60,15 @@ public class ShadowstepDaggerItem extends SwordItem {
 
         NbtCompound tag = stack.getOrCreateNbt();
         long now = world.getTime();
-        int combo = tag.getInt(TAG_COMBO);
-        long last = tag.getLong(TAG_LASTHIT);
 
-        if (combo > 0 && (now - last) > COMBO_TIMEOUT_TICKS) {
-            combo = 0;
+        long until = tag.getLong(TAG_ACTIVE_UNTIL);
+        if (until > 0 && now > until) {
+            tag.putInt(TAG_COMBO, 0);
+            tag.remove(TAG_ACTIVE_UNTIL);
             removeComboModifiers(player);
         }
+
+        int combo = tag.getInt(TAG_COMBO);
 
         if (player.getItemCooldownManager().isCoolingDown(this)) {
             removeComboModifiers(player);
@@ -69,34 +77,34 @@ public class ShadowstepDaggerItem extends SwordItem {
 
         if (combo == 0) {
             ItemStack nyxite = findChargeResource(player);
-            boolean creative = player.getAbilities().creativeMode;
-            if (!creative && nyxite.isEmpty()) {
+            if (!player.getAbilities().creativeMode && nyxite.isEmpty()) {
                 return true;
             }
+            addComboModifiers(player);
         }
 
         if (player instanceof ServerPlayerEntity sp && target.isAlive()) {
             tryTeleportAround((ServerWorld) world, sp, target);
+            sp.lookAt(
+                    net.minecraft.command.argument.EntityAnchorArgumentType.EntityAnchor.EYES,
+                    target.getEyePos()
+            );
         }
 
         combo++;
         tag.putInt(TAG_COMBO, combo);
-        tag.putLong(TAG_LASTHIT, now);
-
-        if (combo == 1) {
-            addComboModifiers(player);
-        }
+        tag.putLong(TAG_ACTIVE_UNTIL, now + COMBO_ACTIVE_TICKS);
 
         if (combo >= MAX_COMBO) {
-            boolean creative = player.getAbilities().creativeMode;
             ItemStack nyxite = findChargeResource(player);
-
-            if (creative || !nyxite.isEmpty()) {
-                if (!creative) nyxite.decrement(1);
+            if (player.getAbilities().creativeMode || !nyxite.isEmpty()) {
+                if (!player.getAbilities().creativeMode) {
+                    nyxite.decrement(1);
+                }
                 player.getItemCooldownManager().set(this, COOLDOWN_TICKS);
             }
-
             tag.putInt(TAG_COMBO, 0);
+            tag.remove(TAG_ACTIVE_UNTIL);
             removeComboModifiers(player);
         }
 
@@ -113,19 +121,36 @@ public class ShadowstepDaggerItem extends SwordItem {
     }
 
     private void addComboModifiers(PlayerEntity player) {
-        EntityAttributeInstance dmg = player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        EntityAttributeInstance spd = player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED);
+        EntityAttributeInstance dmg =
+                player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        EntityAttributeInstance spd =
+                player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED);
+
         if (dmg != null && dmg.getModifier(MOD_DAMAGE_ID) == null) {
-            dmg.addTemporaryModifier(new EntityAttributeModifier(MOD_DAMAGE_ID, "onyx_damage_bonus", 2.0, EntityAttributeModifier.Operation.ADDITION));
+            dmg.addTemporaryModifier(new EntityAttributeModifier(
+                    MOD_DAMAGE_ID,
+                    "onyx_damage_bonus",
+                    2.0,
+                    EntityAttributeModifier.Operation.ADDITION
+            ));
         }
+
         if (spd != null && spd.getModifier(MOD_SPEED_ID) == null) {
-            spd.addTemporaryModifier(new EntityAttributeModifier(MOD_SPEED_ID, "onyx_speed_bonus", 10.0, EntityAttributeModifier.Operation.ADDITION));
+            spd.addTemporaryModifier(new EntityAttributeModifier(
+                    MOD_SPEED_ID,
+                    "onyx_speed_bonus",
+                    10.0,
+                    EntityAttributeModifier.Operation.ADDITION
+            ));
         }
     }
 
     private void removeComboModifiers(PlayerEntity player) {
-        EntityAttributeInstance dmg = player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        EntityAttributeInstance spd = player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED);
+        EntityAttributeInstance dmg =
+                player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        EntityAttributeInstance spd =
+                player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED);
+
         if (dmg != null) dmg.removeModifier(MOD_DAMAGE_ID);
         if (spd != null) spd.removeModifier(MOD_SPEED_ID);
     }
@@ -143,18 +168,23 @@ public class ShadowstepDaggerItem extends SwordItem {
                     c.y,
                     c.z + d * Math.sin(a)
             );
+
             BlockPos safe = findStandable(world, guess, 6);
             if (safe != null) {
                 Vec3d from = player.getPos();
                 spawnShadowSmoke(world, from.x, from.y + 1.0, from.z);
                 playShadowTeleportSound(world, from.x, from.y, from.z);
 
-                player.teleport(safe.getX() + 0.5, safe.getY(), safe.getZ() + 0.5, true);
+                player.teleport(
+                        safe.getX() + 0.5,
+                        safe.getY(),
+                        safe.getZ() + 0.5,
+                        true
+                );
 
                 Vec3d to = player.getPos();
                 spawnShadowSmoke(world, to.x, to.y + 1.0, to.z);
                 playShadowTeleportSound(world, to.x, to.y, to.z);
-                player.lookAt(net.minecraft.command.argument.EntityAnchorArgumentType.EntityAnchor.EYES, target.getEyePos());
                 return;
             }
         }
@@ -165,20 +195,32 @@ public class ShadowstepDaggerItem extends SwordItem {
                 x, y, z, 20, 0.6, 0.25, 0.6, 0.02);
         world.spawnParticles(new DustParticleEffect(SHADOW_LIGHT, 1.5f),
                 x, y, z, 20, 0.6, 0.25, 0.6, 0.02);
-        world.spawnParticles(ParticleTypes.LARGE_SMOKE, x, y, z, 20, 0.6, 0.25, 0.6, 0.02);
-        world.spawnParticles(ParticleTypes.ASH, x, y, z, 10, 0.5, 0.2, 0.5, 0.01);
+        world.spawnParticles(ParticleTypes.LARGE_SMOKE,
+                x, y, z, 20, 0.6, 0.25, 0.6, 0.02);
+        world.spawnParticles(ParticleTypes.ASH,
+                x, y, z, 10, 0.5, 0.2, 0.5, 0.01);
     }
 
     private void playShadowTeleportSound(ServerWorld world, double x, double y, double z) {
-        world.playSound(null, x, y, z, SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0f, 0.6f + world.random.nextFloat() * 0.2f);
-        world.playSound(null, x, y, z, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.PLAYERS, 0.8f, 0.9f + world.random.nextFloat() * 0.1f);
+        world.playSound(null, x, y, z,
+                SoundEvents.ENTITY_ENDERMAN_TELEPORT,
+                SoundCategory.PLAYERS,
+                1.0f,
+                0.6f + world.random.nextFloat() * 0.2f);
+        world.playSound(null, x, y, z,
+                SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE,
+                SoundCategory.PLAYERS,
+                0.8f,
+                0.9f + world.random.nextFloat() * 0.1f);
     }
 
     private BlockPos findStandable(ServerWorld world, BlockPos pos, int vRange) {
         BlockPos.Mutable mutable = pos.mutableCopy();
         for (int dy = 0; dy <= vRange; dy++) {
-            if (isStandable(world, mutable.set(pos.getX(), pos.getY() + dy, pos.getZ()))) return mutable.toImmutable();
-            if (isStandable(world, mutable.set(pos.getX(), pos.getY() - dy, pos.getZ()))) return mutable.toImmutable();
+            if (isStandable(world, mutable.set(pos.getX(), pos.getY() + dy, pos.getZ())))
+                return mutable.toImmutable();
+            if (isStandable(world, mutable.set(pos.getX(), pos.getY() - dy, pos.getZ())))
+                return mutable.toImmutable();
         }
         return null;
     }
@@ -186,9 +228,27 @@ public class ShadowstepDaggerItem extends SwordItem {
     private boolean isStandable(ServerWorld world, BlockPos pos) {
         BlockPos below = pos.down();
         BlockState belowState = world.getBlockState(below);
-        boolean solidBelow = !belowState.getCollisionShape(world, below).isEmpty();
-        boolean airFeet = world.isAir(pos);
-        boolean airHead = world.isAir(pos.up());
-        return solidBelow && airFeet && airHead;
+        return !belowState.getCollisionShape(world, below).isEmpty()
+                && world.isAir(pos)
+                && world.isAir(pos.up());
     }
+
+    public void inventoryTick(ItemStack stack, World world, net.minecraft.entity.Entity entity, int slot, boolean selected) {
+        if (world.isClient) return;
+        if (!(entity instanceof PlayerEntity player)) return;
+
+        NbtCompound tag = stack.getNbt();
+        if (tag == null) return;
+
+        long until = tag.getLong(TAG_ACTIVE_UNTIL);
+        if (until <= 0) return;
+
+        if (world.getTime() > until) {
+            tag.putInt(TAG_COMBO, 0);
+            tag.remove(TAG_ACTIVE_UNTIL);
+            removeComboModifiers(player);
+            player.getItemCooldownManager().set(this, COOLDOWN_TICKS);
+        }
+    }
+
 }
