@@ -100,15 +100,6 @@ public class ThunderPrismEntity extends Entity implements FlyingItemEntity {
 
         if (life > 120 && !getWorld().isClient) {
             discard();
-            if (!storedItem.isEmpty()) {
-                ItemStack drop = storedItem.copy();
-                drop.setCount(1);
-                int newDamage = drop.getDamage() + 1;
-                if (newDamage < drop.getMaxDamage()) {
-                    drop.setDamage(newDamage);
-                    getWorld().spawnEntity(new ItemEntity(getWorld(), getX(), getY(), getZ(), drop));
-                }
-            }
         }
     }
 

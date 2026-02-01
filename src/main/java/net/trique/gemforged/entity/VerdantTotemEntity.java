@@ -95,7 +95,7 @@ public class VerdantTotemEntity extends Entity implements FlyingItemEntity {
         }
 
         if (life == 200 && !getWorld().isClient) explode();
-        if (life > 220 && !getWorld().isClient) dropItemAndRemove();
+        if (life > 220 && !getWorld().isClient) discard();
     }
 
     private void applyRegen() {
@@ -152,7 +152,6 @@ public class VerdantTotemEntity extends Entity implements FlyingItemEntity {
             }
         }
 
-        // 💚 Şifa etkisi
         Box area = getBoundingBox().expand(12);
         List<LivingEntity> allies = getWorld().getEntitiesByClass(LivingEntity.class, area, this::isAlly);
         for (LivingEntity e : allies) {
@@ -165,19 +164,6 @@ public class VerdantTotemEntity extends Entity implements FlyingItemEntity {
         server.spawnParticles(new DustParticleEffect(color, 1.3F),
                 x, y, z, 10, 0, 0, 0, 0.015);
         server.spawnParticles(ParticleTypes.COMPOSTER, x, y, z, 8, 0, 0, 0, 0.015);
-    }
-
-    private void dropItemAndRemove() {
-        if (!storedItem.isEmpty()) {
-            ItemStack drop = storedItem.copy();
-            drop.setCount(1);
-            int newDamage = drop.getDamage() + 1;
-            if (newDamage < drop.getMaxDamage()) {
-                drop.setDamage(newDamage);
-                getWorld().spawnEntity(new net.minecraft.entity.ItemEntity(getWorld(), getX(), getY(), getZ(), drop));
-            }
-        }
-        discard();
     }
 
     private boolean isAlly(LivingEntity entity) {

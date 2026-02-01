@@ -30,10 +30,13 @@ public class GemforgedItemGroups {
 
                         entries.add(GemforgedItems.BATTLE_CHARM);
                         entries.add(GemforgedItems.PHOENIX_CHARM);
+                        entries.add(GemforgedItems.PHOENIXFIRE_STAFF);
                         entries.add(GemforgedItems.SANDBURST_STAFF);
                         entries.add(GemforgedItems.VERDANT_TOTEM);
                         entries.add(GemforgedItems.VENOMFANG_BLADE);
+                        entries.add(GemforgedItems.GLACIAL_CHARM);
                         entries.add(GemforgedItems.THUNDER_PRISM);
+                        entries.add(GemforgedItems.GHOST_BOW);
                         entries.add(GemforgedItems.SHADOWSTEP_DAGGER);
                         entries.add(GemforgedItems.GRAVITY_HORN);
 
@@ -51,6 +54,7 @@ public class GemforgedItemGroups {
                         entries.add(GemforgedItems.TOTEM_TEMPLATE);
                         entries.add(GemforgedItems.BLADE_TEMPLATE);
                         entries.add(GemforgedItems.PRISM_TEMPLATE);
+                        entries.add(GemforgedItems.BOW_TEMPLATE);
                         entries.add(GemforgedItems.DAGGER_TEMPLATE);
                         entries.add(GemforgedItems.HORN_TEMPLATE);
                     }).build());

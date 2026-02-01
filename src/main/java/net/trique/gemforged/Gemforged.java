@@ -4,11 +4,13 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.trique.gemforged.block.GemforgedBlocks;
+import net.trique.gemforged.event.GlacialCharmEvents;
 import net.trique.gemforged.event.PhoenixRelicEvents;
 import net.trique.gemforged.item.GemforgedItemGroups;
 import net.trique.gemforged.item.GemforgedItems;
 import net.trique.gemforged.effect.GemforgedEffects;
 import net.trique.gemforged.entity.GemforgedEntities;
+import net.trique.gemforged.particle.GemforgedParticles;
 import net.trique.gemforged.util.GemforgedLootTableModifiers;
 import net.trique.gemforged.world.GemforgedConfiguredFeatures;
 import net.trique.gemforged.world.GemforgedPlacedFeatures;
@@ -30,10 +32,12 @@ public class Gemforged implements ModInitializer {
         GemforgedBlocks.registerModBlocks();
         GemforgedItemGroups.registerItemGroups();
         GemforgedEffects.registerEffects();
+        GemforgedParticles.registerParticles();
         GemforgedEntities.registerEntities();
         GemforgedLootTableModifiers.register();
         PhoenixRelicEvents.register();
         GemforgedWorldGeneration.generateGemforgedWorldGen();
+        GlacialCharmEvents.register();
         LOGGER.info("Gemforged initialized successfully!");
     }
 }
